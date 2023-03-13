@@ -3,11 +3,21 @@
     "turbo": "^1.8.3"
   },
   "scripts": {
-    "dev" : "turbo run dev",
+    "dev": "turbo run dev",
     "build": "turbo run build",
     "start": "node apps/api/dist/main "
   },
-  "workspaces" : [
+  "workspaces": [
     "apps/*"
-  ]
+  ],
+  "dependencies": {
+    "@nestjs/config": "^2.3.1",
+    "@nestjs/typeorm": "^9.0.1",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
+    "pg": "^8.10.0",
+    "react-router-dom": "^6.9.0",
+    "sass": "^1.59.2",
+    "sort-by": "^1.2.0"
+  }
 }

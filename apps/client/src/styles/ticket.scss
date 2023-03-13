@@ -1,0 +1,54 @@
+.unfold
+{
+    width: 30%;
+    height: 400px;
+    flex-direction: column;
+}
+
+.fold
+{
+    width: 60%;
+    height: 50px;
+    justify-content: space-around;
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+.fold:hover
+{
+    transform: scale(1.1);
+}
+
+.buttonTicket
+{
+    width: 200px;
+    height: 100px;
+    transition: transform 0.3s ease;
+}
+
+.buttonTicket:hover
+{
+    transform: scale(1.1);
+}
+
+.ticketContainer
+{
+    width: 50%;
+    height: 400px;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.ticketListContainer
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.ticketListContainer::-webkit-scrollbar {
+    display: none;
+  }

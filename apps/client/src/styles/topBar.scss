@@ -1,0 +1,42 @@
+@import "variables";
+
+.containerTopBar {
+  width: 100vw;
+  height: 80px;
+  background: transparent;
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+}
+
+.containerTopBar h3 {
+  margin-left: 100px;
+  color: $green;
+  text-shadow: 2px 2px 0px #c3c3c3;
+}
+
+.navButton
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+  margin-right: 100px;
+}
+
+.button
+{
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  text-shadow: none;
+}
+
+.button.color
+{
+  color: $green
+}
+

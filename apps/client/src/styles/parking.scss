@@ -1,0 +1,48 @@
+@import "variables";
+
+.parkingCard
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+    width: 150px;
+    height: 100px;
+    color: #fff;
+}
+
+.parkingCard h3, h4, p
+{
+    margin: 0px;
+}
+
+.place
+{
+    border-radius: 10px;
+    box-shadow:  10px 10px 10px #cdcdcd,
+               -10px -10px 10px #e4e4e4;
+}
+
+.button.round
+{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.placeContainer
+{
+    flex-wrap: wrap;
+    width: 60%;
+    height: 400px;
+    overflow: scroll;
+}
+
+.placeContainer::-webkit-scrollbar {
+    display: none;
+  }
