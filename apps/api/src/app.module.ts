@@ -9,6 +9,9 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { User } from './users/users.entity';
 import { Ticket } from './tickets/tickets.entity';
+import { TicketsModule } from './tickets/tickets.module';
+import { PlaceModule } from './places/places.module';
+import { ParkingModule } from './parking/parking.module';
 
 
 @Module({
@@ -36,7 +39,10 @@ import { Ticket } from './tickets/tickets.entity';
       }),
     }),
     AuthModule,
-    UsersModule
+    UsersModule,
+    TicketsModule,
+    PlaceModule,
+    ParkingModule
   ],
   controllers: [AppController],
   providers: [AppService],

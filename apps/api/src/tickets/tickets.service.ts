@@ -9,6 +9,4 @@ export class TicketsService {
     @InjectRepository(Ticket)
     private readonly ticketsRepository: Repository<Ticket>,
   ) {}
-
-  
 }

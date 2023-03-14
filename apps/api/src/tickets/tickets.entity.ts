@@ -5,8 +5,10 @@ import {
     ManyToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
+    OneToOne
 } from "typeorm";
 import { User } from "../users/users.entity";
+import { Place } from "src/places/places.entity";
 
 @Entity()
 export class Ticket {
@@ -24,4 +26,7 @@ export class Ticket {
 
   @ManyToOne(() => User, { eager: true })
   user!: User;
+
+  @OneToOne(() => Place, (place) => place.ticket)
+  place: Place | null;
 }

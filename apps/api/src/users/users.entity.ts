@@ -32,5 +32,5 @@ export class User {
   token!: string;
 
   @OneToMany(() => Ticket, (Ticket) => Ticket.user)
-  opponents!: Ticket[];
+  tickets!: Ticket[];
 }

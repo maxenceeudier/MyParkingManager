@@ -16,12 +16,11 @@ export default function ParkingPage(){
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (User && User.name.length === 0)
-            return navigate("/");
+        //if (User && User.name.length === 0)
+        //    return navigate("/");
     }, [User])
 
     useEffect(() => {
-        //fetch(`/parking/infos/${name}`)
         setNumMax(Number(numOfNiv));
     }, [name, numOfNiv])
     

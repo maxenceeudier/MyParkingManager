@@ -41,7 +41,7 @@ export default function TicketsPage() {
     return (
         <div className="fullWind">
         <TopBar focus={"Tickets"} />
-        <div className="center around">
+        <div className="center around fullWind">
             <TicketComponent ticket={ticketSelect} fold={false}/>
             <div className="center cardShapeOut ticketContainer">
                 <div>

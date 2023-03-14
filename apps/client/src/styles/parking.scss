@@ -64,3 +64,27 @@ h3, h4, p
     width: 60%;
     background: transparent;
 }
+
+
+.refreshIcon
+{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -90px;
+    left: -90px;
+}
+
+.rotate {
+    animation: rotate-keyframes 1s ease;
+   }
+   
+   @keyframes rotate-keyframes {
+    from {
+     transform: rotate(0deg);
+    }
+   
+    to {
+     transform: rotate(360deg);
+    }
+}

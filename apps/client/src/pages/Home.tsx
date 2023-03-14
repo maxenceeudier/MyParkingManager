@@ -17,12 +17,17 @@ export default function Home(){
     }, [User])
 
     useEffect(() => {
-        //fetch('/parking')
-        let parkList : Parking[] = [
-            {name: "Annecy Centre", numOfNiv: 3, placeFree: 10, placeTotal: 30},
-            {name: "Seynod Centre", numOfNiv: 5, placeFree:3, placeTotal: 50},
-        ]
-        setListOfParking(parkList.map((e, i) => <Link to={`/parking/${e.name}/${e.numOfNiv}`} key={i} ><ParkingCard parking={e} /></Link>))
+        fetch('/api/parking')
+        .then(res => {
+            if (res.ok)
+            {
+                return res.json().then(data => {
+                    setListOfParking(data.map((e : Parking, i : number) => <Link to={`/parking/${e.name}/${e.numOfNiv}`} key={i} ><ParkingCard parking={e} /></Link>))
+                })
+            }
+        }
+        )
+        .catch(error => console.log(error.message));
     }, [])
 
     return (

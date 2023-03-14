@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Lock, selectUser } from "../store/UserSlice";
 
-export default function PlaceComponant(props: {place : Place}) {
+export default function PlaceComponant(props: {place : Place, choosePlace: (id: string) => void}) {
     const [isFree, setIsfree] = useState(true);
     const {lock} = useSelector(selectUser);
     const dispatch = useDispatch();
@@ -15,9 +15,16 @@ export default function PlaceComponant(props: {place : Place}) {
     function choosePlace(){
         if (!lock)
         {
-            //fetch(`/place/update/${props.place.id}`)
+            fetch(`/api/place/update/${props.place.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .catch(error => console.log(error.message));
             dispatch(Lock());
             setIsfree(false);
+            props.choosePlace(props.place.id);
         }
     }
 

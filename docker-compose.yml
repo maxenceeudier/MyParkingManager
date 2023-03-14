@@ -28,7 +28,6 @@ services:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DATABASE: ${DATABASE_NAME}
       FRONTEND_BASE_URL: ${FRONTEND_BASE_URL}
-      JWT_SECRET: ${JWT_SECRET}
     networks:
       - app
   database:

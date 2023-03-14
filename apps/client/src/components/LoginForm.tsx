@@ -64,7 +64,6 @@ export function LoginForm(): ReactElement {
             setFormSuccess("Success! Redirecting...");
             const {name, token} = response
             dispatch(setUser({name: name, token: token}));
-            console.log('redirect');
             return navigate("/Home");
           }
          
