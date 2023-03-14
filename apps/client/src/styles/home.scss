@@ -1,0 +1,13 @@
+.homeContainer
+{
+    height: 60vh;
+    padding-top: 20px;
+    overflow: scroll;
+}
+
+.listOfParking
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

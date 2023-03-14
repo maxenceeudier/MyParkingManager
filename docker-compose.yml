@@ -57,6 +57,19 @@ services:
       interval: 5s
       timeout: 5s
       retries: 50
+  server:
+    image: nginx:stable-alpine
+    container_name: parkingmanager-nginx
+    depends_on:
+      - client
+      - api
+    restart: always
+    networks:
+      - app
+    volumes:
+      - ./confignginx:/etc/nginx/templates
+    ports:
+      - 8080:80
 
 networks:
   app:

@@ -1,4 +1,4 @@
-import { Parking } from "../../interface/Parking";
+import { Parking } from "../interface/Parking";
 import "../styles/parking.scss";
 import "../App.css";
 import { redirect } from "react-router-dom";
@@ -11,7 +11,6 @@ export default function ParkingCard(props : {parking: Parking}) {
                 <h4>Places:</h4>
                 <p>{`${props.parking.placeFree} / ${props.parking.placeTotal}`}</p>
             </div>
-            
         </div>
     )
 }

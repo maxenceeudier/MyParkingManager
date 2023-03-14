@@ -1,9 +1,9 @@
 import { LoginForm } from "../components/LoginForm";
-import styles from "../../styles/login-page.module.scss";
+import "../styles/login.scss";
 
 export default function Login(): JSX.Element {
   return (
-    <div className={styles.container}>
+    <div className="containerLogin">
      <LoginForm />
     </div>
   );

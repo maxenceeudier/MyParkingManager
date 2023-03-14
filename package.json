@@ -1,5 +1,7 @@
 {
   "devDependencies": {
+    "@types/passport": "^1.0.12",
+    "@types/passport-http": "^0.3.9",
     "turbo": "^1.8.3"
   },
   "scripts": {
@@ -12,12 +14,22 @@
   ],
   "dependencies": {
     "@nestjs/config": "^2.3.1",
+    "@nestjs/passport": "^9.0.3",
     "@nestjs/typeorm": "^9.0.1",
+    "@reduxjs/toolkit": "^1.9.3",
+    "bcrypt": "^5.1.0",
+    "class-validator": "^0.14.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
+    "passport": "^0.6.0",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0",
     "pg": "^8.10.0",
+    "react-hook-form": "^7.43.5",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
     "sass": "^1.59.2",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "uid2": "^1.0.0"
   }
 }

@@ -1,9 +1,9 @@
-/*import { ReactElement, useState } from "react";
+import { ReactElement, useState} from "react";
 import { useForm } from "react-hook-form";
-import { Input } from "../components/Input";
-import styles from "styles/RegisterForm.module.scss";
-import { useRouter } from "next/router";
-import Link from "next/link";*/
+import "../styles/login.scss"
+import { Link, useNavigate } from "react-router-dom";
+import { Input } from "./Input";
+
 
 interface RegisterFormData {
   username: string;
@@ -42,7 +42,7 @@ async function registerUser(
 
 export function RegisterForm()//: ReactElement 
 {
-  /*const router = useRouter();
+  const navigate = useNavigate();
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
   const [loading, setLoading] = useState(false);
@@ -63,8 +63,7 @@ export function RegisterForm()//: ReactElement
           throw new Error("An unexpected error occured...");
         } else {
           setFormSuccess("Success! Redirecting...");
-          localStorage.removeItem("state");
-          router.replace("/auth/login");
+          return navigate("/");
         }
       })
       .catch((error) => {
@@ -74,8 +73,8 @@ export function RegisterForm()//: ReactElement
   };
 
   return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <div className="container cardShapeOut">
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h1>Register</h1>
         <Input
           {...register("username", { required: "'username' is required" })}
@@ -100,14 +99,15 @@ export function RegisterForm()//: ReactElement
           type="password"
           fullWidth
         />
-        {formError ? <p className={styles.error}>{formError}</p> : null}
-        {formSuccess ? <p className={styles.success}>{formSuccess}</p> : null}
+        {formError ? <p className="error">{formError}</p> : null}
+        {formSuccess ? <p className="success">{formSuccess}</p> : null}
         <Input disabled={loading} type="submit" fullWidth primary />
       </form>
       <p>
-        Or <Link href="/auth/login">login</Link>
+        Or 
+        <Link to="/login" style={{marginLeft: '20px'}}>login</Link>
       </p>
     </div>
-  );*/
+  );
   return <></>
 }

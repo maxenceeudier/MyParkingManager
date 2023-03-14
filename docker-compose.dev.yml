@@ -6,7 +6,7 @@ services:
     volumes:
       - ./apps/client:/usr/src/apps/client
   api:
-    command: npm run dev --prefix apps/api
+    command: npm run dev --prefix apps/api 
     user: "0:0"
     volumes:
       - ./apps/api:/usr/src/apps/api

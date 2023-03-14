@@ -1,56 +1,43 @@
-import { ReactElement, useEffect, useState } from "react";
-//import { useForm } from "react-hook-form";
-//import { Input } from "../components/Input";
-//import { TextDivider } from "../components/TextDivider";
-import styles from "styles/LoginForm.module.scss";
-import crypto from "crypto";
-//import { useRouter } from "next/router";
-//import { AccessTokenResponse, TfaNeededResponse } from "types";
-//import Link from "next/link";
-//import { useDispatch } from "react-redux";
-//import { setUserState } from "../../store/UserSlice";
-//import { identifyUser } from "../helpers/identifyUser";
+import { ReactElement, useState } from "react";
+import { Input } from "../components/Input";
+import "../styles/login.scss";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/UserSlice";
 
 interface LoginFormData {
   username: string;
   password: string;
 }
 
-function obtainState(): string {
-  let state = localStorage.getItem("state");
-  if (state !== null) return state;
-  state = crypto.randomBytes(32).toString("hex");
-  localStorage.setItem("state", state);
-  return state;
-}
-
-/*async function login(
-  //data: LoginFormData,
-  //state: string
-)//: Promise<AccessTokenResponse | TfaNeededResponse | null> 
+async function login(
+  data: LoginFormData
+): Promise<{name: string, token: string} | null> 
 {
   const response = await fetch(`/api/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ ...data, state }),
+    body: JSON.stringify({ ...data } ),
   }).then(async (response) => {
     if (!response.ok) {
       return response.json().then((error) => {
         throw new Error(error.message || "An unexpected error occured...");
       });
     } else {
-      return response.json();
+      return await response.text().then((data) => {
+        return data ? JSON.parse(data) : {};
+      });
     }
   });
   if (!response) return null;
   return response;
-}*/
+}
 
 export function LoginForm(): ReactElement {
-  /*const router = useRouter();
-  const [state, setState] = useState("");
+  let navigate = useNavigate();
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
   const [loading, setLoading] = useState(false);
@@ -66,44 +53,33 @@ export function LoginForm(): ReactElement {
     setFormSuccess("");
     setLoading(true);
 
-    await login(data, state)
+    await login(data)
       .then(async (response) => {
         if (response === null) {
           throw new Error("An unexpected error occured...");
         } else {
           if (
-            "access_token" in response &&
-            response.access_token &&
-            response.refresh_token
+            response
           ) {
             setFormSuccess("Success! Redirecting...");
-            localStorage.setItem("access_token", response.access_token);
-            localStorage.setItem("refresh_token", response.refresh_token);
-            localStorage.removeItem("state");
-            const user = await identifyUser();
-            if (user) dispatch(setUserState(user));
-            router.replace("/");
-          } else if (
-            "message" in response &&
-            response.message === "Authentication factor needed"
-          ) {
-            router.replace(`/auth/${response.route}`);
+            const {name, token} = response
+            dispatch(setUser({name: name, token: token}));
+            console.log('redirect');
+            return navigate("/Home");
           }
+         
         }
       })
       .catch((error) => {
-        setFormError(error?.message || "An unexpected error occured...");
+        setFormError( error.message || "An unexpected error occured...");
         setLoading(false);
       });
   };
 
-  useEffect(() => {
-    setState(obtainState());
-  }, []);
 
   return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <div className="container cardShapeOut">
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h1>Login</h1>
         <Input
           {...register("username", { required: "'username' is required" })}
@@ -121,16 +97,13 @@ export function LoginForm(): ReactElement {
           type="password"
           fullWidth
         />
-        {formError ? <p className={styles.error}>{formError}</p> : null}
-        {formSuccess ? <p className={styles.success}>{formSuccess}</p> : null}
-        <Input disabled={loading} type="submit" fullWidth primary />
+        {formError ? <p className="error">{formError}</p> : null}
+        {formSuccess ? <p className="success">{formSuccess}</p> : null}
+        <Input disabled={loading} type="submit" fullWidth primary/>
       </form>
       <p>
-        <Link href="/auth/register">Create an account</Link>
+        <Link to="/register">Create an account</Link>
       </p>
-      <TextDivider>or</TextDivider>
-      <FtOAuth2Button disabled={loading} state={state} fullWidth />
     </div>
-  );*/
-  return <></>
+  );
 }

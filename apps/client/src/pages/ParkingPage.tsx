@@ -3,16 +3,27 @@ import ParkingComponent from '../components/ParkingComponent';
 import TopBar from '../components/TopBar';
 import "../App.css";
 import { useParams } from 'react-router-dom';
+import { Parking } from '../interface/Parking';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../store/UserSlice';
+import { useNavigate } from 'react-router-dom';
 
 export default function ParkingPage(){
     const [numNiv, setNumNiv] = useState(1);
-    const [numMax, setNumMax] = useState(0);
-
-    const {name} = useParams();
+    const [numMax, setNumMax] = useState(1);
+    const {name, numOfNiv} = useParams();
+    const User = useSelector(selectUser);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        setNumMax(3);
-    }, [name])
+        if (User && User.name.length === 0)
+            return navigate("/");
+    }, [User])
+
+    useEffect(() => {
+        //fetch(`/parking/infos/${name}`)
+        setNumMax(Number(numOfNiv));
+    }, [name, numOfNiv])
     
     function prev()
     {
@@ -26,13 +37,12 @@ export default function ParkingPage(){
             setNumNiv((prev) => prev + 1 )
     }
 
-
     return (
         <div>
             <TopBar focus={"Parking"} />            
-            <div className='cardShapeOut' style={{display:'flex', justifyContent: "center", alignItems: "center", flexDirection: "column", width: '60%', marginLeft: '20%'}}>
+            <div className='cardShapeOut center column soixanteVinght'>
                 <h1 className='cardShapeIn small' style={{padding: '10px'}}>{name}</h1>
-                <div style={{display:'flex', justifyContent: "space-around", width: '60%', background:'transparent'}}>
+                <div className='level'>
                     {numNiv > 1 ? 
                     <div className='button cardShapeOut small round' onClick={prev}>{"<"}</div>
                     : <div></div>}

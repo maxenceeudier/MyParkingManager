@@ -8,14 +8,19 @@
     align-items: center;
     padding: 20px;
     overflow: hidden;
-    width: 150px;
+    width: 120px;
     height: 100px;
     color: #fff;
 }
 
-.parkingCard h3, h4, p
+h3, h4, p
 {
     margin: 0px;
+}
+
+.parkingCard
+{
+    margin: 10px;
 }
 
 .place
@@ -23,6 +28,11 @@
     border-radius: 10px;
     box-shadow:  10px 10px 10px #cdcdcd,
                -10px -10px 10px #e4e4e4;
+
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    font-size: 20px;
 }
 
 .button.round
@@ -45,4 +55,12 @@
 
 .placeContainer::-webkit-scrollbar {
     display: none;
-  }
+}
+
+.level
+{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    background: transparent;
+}

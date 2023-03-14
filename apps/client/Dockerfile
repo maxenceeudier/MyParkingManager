@@ -25,5 +25,9 @@ RUN npx turbo run build --filter=client...
 FROM nginx:stable-alpine AS runner
 WORKDIR /usr/src
 
+RUN rm -f /etc/nginx/conf.d/default.conf
+RUN mkdir -p /etc/nginx/conf.d
+COPY apps/client/nginx/nginx.conf /etc/nginx/conf.d
+
 COPY --from=installer /usr/src/apps/client/dist /usr/share/nginx/html/
 EXPOSE 80

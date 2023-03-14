@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import PlaceComponant from "./Place"
-import {Place} from "../../interface/Place"
+import {Place} from "../interface/Place"
 
 function createParking(numNiv: number, numPlaces: number) : Place[]
 {
@@ -11,7 +11,7 @@ function createParking(numNiv: number, numPlaces: number) : Place[]
     {
         for (let j = 0; j < numPlaces; j++)
         {
-            parking.push({niv: i + 1, num: placeNUmber++, isFree: true});
+            parking.push({id: "3", niv: i + 1, num: placeNUmber++, isFree: true});
         }
     }
     return (parking)
@@ -20,25 +20,31 @@ function createParking(numNiv: number, numPlaces: number) : Place[]
 
 export default function ParkingComponent(props : {niv: number, name?: string}) {
     const [parking, setParking] = useState<Place[]>([]);
+    const [parkingInView, setParkingInView] = useState<Place[]>([]);
     const [places, setPlaces] = useState<JSX.Element[]>([]);
 
     useEffect(() => {
+        //fetch(`parking/places/${name}`)
+        setParking([]);
+    }, [])
+
+    useEffect(() => {
         let park = createParking(3, 20).filter(e => e.niv == props.niv);
-        setParking(park);
+        setParkingInView(park);
     }, [props.niv])
 
     useEffect(() => {
-        if (parking.length)
+        if (parkingInView.length)
         {
-            let placesTmp  = parking.map((e, i) => {
+            let placesTmp  = parkingInView.map((e, i) => {
                return  <PlaceComponant place={e} key={i}/>
             });
             setPlaces(placesTmp)
         }
-    }, [parking])
+    }, [parkingInView])
 
     return (
-        <div className="placeContainer center" style={{flexWrap: 'wrap', width: "60%", height: '400px', overflow: 'scroll'}}>
+        <div className="placeContainer center">
             {places}
         </div>
     )

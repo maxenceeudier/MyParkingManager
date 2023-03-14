@@ -1,0 +1,122 @@
+@import "variables";
+
+.container {
+  border-radius: 12px;
+  padding: 30px;
+  width: 367px;
+
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+  align-items: center;
+
+  background: $bg;
+  color: #fff;
+  text-align: center;
+
+  * {
+    margin: 0;
+  }
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+p.error,
+p.success {
+  margin: 6px 0;
+}
+
+p.error {
+  color: $red;
+}
+
+p.success {
+  color: $green;
+}
+
+//loginpage
+.containerLogin {
+    width: 100vw;
+    height: 100vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.containerInput {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px $dark-neutral-white solid;
+  outline: none;
+  box-sizing: border-box;
+  padding: 12px 6px;
+
+  background: none;
+  color: #000;
+  font-size: 16px;
+}
+
+.input.error {
+  border-bottom-color: $red;
+}
+
+.input:disabled {
+  border-bottom-color: $dark;
+
+  color: $dark;
+}
+
+.input::placeholder {
+  color: $dark;
+  opacity: 1;
+}
+
+.input[type="submit"] {
+  margin: 0;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 18px;
+  overflow: visible;
+
+  background: $dark;
+  color: #1e1e1e;
+  font: inherit;
+
+  line-height: normal;
+
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.input[type="submit"].primary {
+  background-color: $green;
+}
+
+.input[type="submit"].primary:disabled {
+  background-color: $green;
+}
+
+.fullWidth {
+  width: 100%;
+}
+

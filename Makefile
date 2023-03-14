@@ -1,8 +1,8 @@
 prod:	
-		docker-compose up --build -d
+		docker-compose up --build 
 
 dev:	
-		docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build -d 
+		docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build 
 
 re-prod:	stop prod
 
