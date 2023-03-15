@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { ServeStaticModule, serveStaticProviders } from '@nestjs/serve-static';
-import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -31,10 +29,6 @@ import { ParkingModule } from './parking/parking.module';
         database: configService.get('POSTGRES_DATABASE'),
         entities: [User, Ticket],
         autoLoadEntities: true,
-        // TODO check NODE_ENV
-        //
-        // From NestJS docs:
-        // Setting `synchronize: true` shouldn't be used in production - otherwise you can lose production data.
         synchronize: true,
       }),
     }),

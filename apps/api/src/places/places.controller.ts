@@ -1,12 +1,10 @@
-import { Body, Controller, Get, Patch, UseGuards, Param, Put, Post} from '@nestjs/common';
+import { Body, Controller, Param, Put, Post} from '@nestjs/common';
 import { PlaceService } from './places.service';
-import { Place } from './places.entity';
 
 @Controller('place')
 export class PlaceController {
   constructor(private readonly placeService: PlaceService) {}
 
-  
   @Post('/taken')
   takePlace(
     @Body() body : {placeId: string, userToken: string}

@@ -1,6 +1,5 @@
-//import { Transform } from 'class-transformer';
 import { IsEmail, IsNotEmpty, IsString, MaxLength } from 'class-validator';
-//import sanitize from 'sanitize-html';
+
 
 export class RegisterUserDto {
   @IsNotEmpty()

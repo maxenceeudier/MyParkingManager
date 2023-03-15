@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Patch, UseGuards, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { User as CurrentUser } from '../common/decorators/user.decorator';
 import { Ticket } from 'src/tickets/tickets.entity';
 
 

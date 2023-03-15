@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Patch, UseGuards, Param } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { ParkingService } from './parking.service';
 import { ParkingFront } from './parking.service';
 import { PlaceFront } from './parking.service';
@@ -19,11 +19,4 @@ export class ParkingController {
     @Param('name') name : string) : Promise<PlaceFront[]> {
       return this.parkingService.getPlaces(name);
   } 
-
-  /*@Get('/:username')
-  getAchievements(
-    @Param('username') username: string,
-  ): Promise<Achievements[]> {
-    return this.achievemtsService.getAchivements(username);
-  }*/
 }

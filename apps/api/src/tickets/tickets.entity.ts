@@ -1,11 +1,8 @@
 import {
-    Column,
     CreateDateColumn,
     Entity,
     ManyToOne,
     PrimaryGeneratedColumn,
-    UpdateDateColumn,
-    OneToOne
 } from "typeorm";
 import { User } from "../users/users.entity";
 import { Place } from "src/places/places.entity";
