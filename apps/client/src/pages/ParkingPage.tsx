@@ -46,7 +46,7 @@ export default function ParkingPage(){
                     <div className='button cardShapeOut small round' onClick={prev}>{"<"}</div>
                     : <div></div>}
 
-                    <h2>Niv {numNiv}</h2>
+                    <h2>Level {numNiv}</h2>
 
                     {numNiv < numMax?
                     <div className=' button cardShapeOut small round' onClick={next}>{">"}</div>
