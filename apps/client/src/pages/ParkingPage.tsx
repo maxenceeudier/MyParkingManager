@@ -16,8 +16,8 @@ export default function ParkingPage(){
     const navigate = useNavigate();
 
     useEffect(() => {
-        //if (User && User.name.length === 0)
-        //    return navigate("/");
+        if (User && User.name.length === 0)
+            return navigate("/");
     }, [User])
 
     useEffect(() => {
@@ -37,9 +37,9 @@ export default function ParkingPage(){
     }
 
     return (
-        <div>
+        <div className='fullWind'>
             <TopBar focus={"Parking"} />            
-            <div className='cardShapeOut center column soixanteVinght'>
+            <div className='cardShapeOut center column soixanteVinght' style={{minWidth: '60%', marginTop: '100px'}}>
                 <h1 className='cardShapeIn small' style={{padding: '10px'}}>{name}</h1>
                 <div className='level'>
                     {numNiv > 1 ? 
@@ -53,7 +53,7 @@ export default function ParkingPage(){
                     : <div></div>
                     }
                 </div>
-                <div className='center'>
+                <div className='center' style={{width: '100%'}}>
                     <ParkingComponent niv={numNiv} name={name}/>
                 </div>
             </div>

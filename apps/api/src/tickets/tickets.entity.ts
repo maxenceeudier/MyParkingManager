@@ -16,17 +16,14 @@ export class Ticket {
   id!: string;
 
   @CreateDateColumn()
-  created_at!: Date;
+  arrivedAt!: Date;
 
-  @UpdateDateColumn()
-  updated_at!: Date | null;
+  @CreateDateColumn({nullable: true, default: null})
+  leftAt!: Date | null;
 
-  @Column("smallint", { default: 0 })
-  numPlace!: number;
-
-  @ManyToOne(() => User, { eager: true })
+  @ManyToOne(() => User)
   user!: User;
 
-  @OneToOne(() => Place, (place) => place.ticket)
-  place: Place | null;
+  @ManyToOne(() => Place, { eager: true })
+  place!: Place;
 }

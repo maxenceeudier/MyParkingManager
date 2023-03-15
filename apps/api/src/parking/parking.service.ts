@@ -36,7 +36,7 @@ export class ParkingService {
     const parkings = await this.parkingRepository.find();
     if (!parkings.length)
     {
-      const parkingsName = ["Annecy centre", "Seynod", "Cran Gevrier centre"];
+      const parkingsName = ["Annecy", "Seynod", "Cran-Gevrier"];
       parkingsName.forEach(async (e, i) => {
         let parking = new Parking();
         parking.name = e;

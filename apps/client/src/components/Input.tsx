@@ -12,7 +12,6 @@ export interface InputProps {
   placeholder?: string;
   primary?: boolean;
   type?: string;
-  // React Hook Form error
   error?: FieldError;
 }
 

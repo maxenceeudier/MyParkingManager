@@ -21,17 +21,28 @@ export default function TicketsPage() {
     }, [User])
 
     useEffect(() => {
-        let tmp : Ticket[] = [];
-        for (let i = 0; i < 10; i++)
+        if (User)
         {
-            tmp.push({id :"0", place: {id:'0', num: i + 1, isFree: false, niv: 1}, arrivedAt: new Date(), leftAt:i === 0 ? null : new Date()})
+            fetch(`/api/user/tickets/${User.token}`)
+            .then(res => {
+                if (res.ok)
+                {
+                    return res.json().then(data => {
+                        setTicketSelect(data[0]);
+                        setTicketsList(data.map((e : Ticket, i : number) => {
+                            e.arrivedAt = new Date(e.arrivedAt);
+                            if (e.leftAt)
+                                e.leftAt = new Date(e.leftAt);
+                            return <TicketComponent ticket={e} fold={true} key={i} onClick={() => chooseTicket(e)}/>
+                    }));
+                        setTickets(data);
+                    })
+                }
+            }
+            )
+            .catch(error => console.log(error.message));
         }
-        setTicketSelect(tmp[0]);
-        setTicketsList(tmp.map((e, i) => 
-            <TicketComponent ticket={e} fold={true} key={i} onClick={() => chooseTicket(e)}/>
-        ));
-        setTickets(tmp);
-    }, [])
+    }, [User])
 
     function chooseTicket(e : Ticket)
     {
@@ -45,7 +56,7 @@ export default function TicketsPage() {
             <TicketComponent ticket={ticketSelect} fold={false}/>
             <div className="center cardShapeOut ticketContainer">
                 <div>
-                    <h2>Tickets History</h2>
+                    <h1>Tickets History</h1>
                 </div>
                 <div className="ticketListContainer">
                     {tiketsList}

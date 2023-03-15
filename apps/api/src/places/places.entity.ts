@@ -2,8 +2,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    OneToOne,
-    JoinColumn,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
     ManyToOne,
@@ -22,10 +21,9 @@ export class Place {
   @UpdateDateColumn()
   updated_at!: Date | null;
 
-  @OneToOne(() => Ticket, (ticket) => ticket.place)
-  @JoinColumn()
-  ticket: Ticket | null;
-
+  @OneToMany(() => Ticket, (Ticket) => Ticket.place)
+  tickets!: Ticket[];
+  
   @Column("smallint", { default: 0 })
   num!: number;
 

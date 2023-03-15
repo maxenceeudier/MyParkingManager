@@ -10,6 +10,7 @@ import { RegisterUserDto } from "src/users/register-user.dto";
 export interface ResponseLogin {
   name: string,
   token: string,
+  lock: boolean,
 }
 
 @Injectable()
@@ -48,7 +49,10 @@ export class AuthService {
         });
         if (!userLogin)
             throw new BadRequestException('user not found');
-       return {name: user.name, token: userLogin.token}
+
+        const tickets = await this.usersService.getTickets(userLogin.token);
+        const lock = tickets.filter(e => e.leftAt === null).length !== 0;
+       return {name: user.name, token: userLogin.token, lock: lock}
     }
 
 }

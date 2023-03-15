@@ -10,7 +10,8 @@
     overflow: hidden;
     width: 120px;
     height: 100px;
-    color: #fff;
+    margin: 10px;
+    color: $dark2;
 }
 
 h3, h4, p
@@ -18,10 +19,12 @@ h3, h4, p
     margin: 0px;
 }
 
-.parkingCard
+.parkingCard h2
 {
-    margin: 10px;
+    font-size: 20px;
+    margin: 0px;
 }
+
 
 .place
 {
@@ -42,13 +45,13 @@ h3, h4, p
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
 }
 
 .placeContainer
 {
     flex-wrap: wrap;
     width: 60%;
+    margin-left: 20%;
     height: 400px;
     overflow: scroll;
 }
@@ -65,14 +68,26 @@ h3, h4, p
     background: transparent;
 }
 
+.level h2
+{
+    font-size: 40px;
+    margin-top: 0;
+}
+
 
 .refreshIcon
 {
     width: 40px;
     height: 40px;
     position: absolute;
-    top: -90px;
-    left: -90px;
+    top: -45%;
+    left: 20px;
+    transition: transform 0.3s ease;
+}
+
+.refreshIcon:hover
+{
+    transform: scale(1.1);
 }
 
 .rotate {

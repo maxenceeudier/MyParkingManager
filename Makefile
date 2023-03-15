@@ -1,17 +1,12 @@
 prod:	
 		docker-compose up --build 
 
-dev:	
-		docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build 
-
 re-prod:	stop prod
 
-re-dev:		stop dev
-
 stop:	
-		docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
+		docker-compose -f docker-compose.yml -f down
 
 clean:
-	docker system prune
+	docker system prune -a && docker volume prune
 
-.PHONY: prod dev stop re-prod re-dev
+.PHONY: prod  stop re-prod clean

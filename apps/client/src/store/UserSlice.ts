@@ -23,6 +23,7 @@ export const UserSlice = createSlice({
     setUser: (state, action) => {
       state.token =  action.payload.token;
       state.name = action.payload.name
+      state.lock = action.payload.lock
     },
     removeUser: (state) => {
       state.name = "";

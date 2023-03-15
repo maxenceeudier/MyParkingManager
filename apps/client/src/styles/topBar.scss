@@ -14,7 +14,6 @@
 
 .containerTopBar h3 {
   margin-left: 100px;
-  color: $green;
   text-shadow: none;
   margin-top: 10px;
 }
@@ -32,12 +31,18 @@
 {
   width: 100px;
   height: 30px;
-  color: #fff;
+  color: $dark2;
   text-shadow: none;
+  transition: transform 0.3s ease;
 }
 
 .button.color
 {
   color: $green
+}
+
+.button:hover
+{
+  transform: scale(1.1);
 }
 

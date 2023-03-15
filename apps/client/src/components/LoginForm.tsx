@@ -13,7 +13,7 @@ interface LoginFormData {
 
 async function login(
   data: LoginFormData
-): Promise<{name: string, token: string} | null> 
+): Promise<{name: string, token: string, lock: boolean} | null> 
 {
   const response = await fetch(`/api/auth/login`, {
     method: "POST",
@@ -62,8 +62,8 @@ export function LoginForm(): ReactElement {
             response
           ) {
             setFormSuccess("Success! Redirecting...");
-            const {name, token} = response
-            dispatch(setUser({name: name, token: token}));
+            const {name, token, lock} = response
+            dispatch(setUser({name: name, token: token, lock: lock}));
             return navigate("/Home");
           }
          

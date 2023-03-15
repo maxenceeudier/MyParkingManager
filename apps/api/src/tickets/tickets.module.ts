@@ -5,6 +5,8 @@ import { TicketsService } from './tickets.service';
 import { TicketsController } from './tickets.controller';
 import { User } from "../users/users.entity";
 import { Place } from "src/places/places.entity";
+import { UsersModule } from 'src/users/users.module';
+import { PlaceModule } from 'src/places/places.module';
 
 @Module({
   imports: [

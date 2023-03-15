@@ -1,8 +1,9 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from 'typeorm';
 import { User } from "./users.entity";
 import {v4 as uuid} from 'uuid';
+import { Ticket } from "src/tickets/tickets.entity";
 
 export interface AddUserData {
   name: string;
@@ -43,5 +44,22 @@ export class UsersService {
     userEntity.token = uuid(32);
     if (user.password) userEntity.password = user.password;
     return this.usersRepository.save(userEntity);
+  }
+
+  async getTickets(token: string) : Promise<Ticket[]> {
+    const user = await this.usersRepository.findOne({
+      relations: {
+        tickets: {
+          place: {
+            parking: true
+          } 
+        }
+      },
+      where: {
+        token: token
+      },
+    });
+    if (!user) throw new NotFoundException('user not found');
+    return user.tickets.reverse();
   }
 }

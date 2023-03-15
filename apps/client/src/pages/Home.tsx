@@ -33,8 +33,8 @@ export default function Home(){
     return (
         <div style={{width: "100vw"}}>
             <TopBar focus={"Home"} />
-            <div className='cardShapeOut soixanteVinght homeContainer'>
-                <div className="cardShapeIn small soixanteVinght" style={{padding: '10px'}}>
+            <div className='cardShapeOut soixanteVinght homeContainer' style={{padding: '30px'}}>
+                <div className="cardShapeIn small soixanteVinght">
                     <h1>Parking Manager</h1>
                 </div>
                 <h2>Choose a Parking</h2>
